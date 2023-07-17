@@ -2,7 +2,12 @@ import pygame
 import tkinter as tk
 from pynput import keyboard, mouse
 
+import pygame
+import tkinter as tk
+from pynput import keyboard, mouse
+
 def play_sound(sound_file):
+    # Ses dosyasını çalmak için pygame kullanılır
     pygame.mixer.init()
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
@@ -18,16 +23,20 @@ def get_mouse_button_label_text(button):
 
 def on_press(key):
     if hasattr(key, 'char'):
+        # Klavye tuşuna basıldığında ses çalınır
         play_sound(sound_file)
     key_label.config(text=get_key_label_text(key))
 
 def on_click(x, y, button, pressed):
     if pressed:
+        # Fare tuşuna basıldığında ses çalınır
         play_sound(sound_file)
-        mouse_button_label.config(text=get_mouse_button_label_text(button))
+    mouse_button_label.config(text=get_mouse_button_label_text(button))
 
 def close_program():
+    # Programı sonlandırmak için kullanılır
     root.quit()
+
 
 def main():
     pygame.init()
